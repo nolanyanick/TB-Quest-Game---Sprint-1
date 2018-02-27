@@ -17,6 +17,7 @@ namespace TB_QuestGame
         // declare game objects for the ConsoleView object to use
         //
         Player _gamePirate;
+        Universe _gameUniverse;
 
         #endregion
 
@@ -29,9 +30,10 @@ namespace TB_QuestGame
         /// <summary>
         /// default constructor to create the console view objects
         /// </summary>
-        public ConsoleView(Player gameTraveler)
+        public ConsoleView(Player gamePirate, Universe gameUniverse)
         {
-            _gamePirate = gameTraveler;
+            _gamePirate = gamePirate;
+            _gameUniverse = gameUniverse;
 
             InitializeDisplay();
         }
@@ -78,29 +80,27 @@ namespace TB_QuestGame
         public PlayerAction GetActionMenuChoice(Menu menu)
         {
             PlayerAction choosenAction = PlayerAction.None;
-            bool selectingMenuOption = true;
+            Console.CursorVisible = false;
 
             //
-            // TODO validate menu choices
+            // an array of valid keys from menu dictionary
             //
-            while (selectingMenuOption)
+            char[] validKeys = menu.MenuChoices.Keys.ToArray();
+
+            //
+            // validate key pressed in MenuChoices dictionary
+            //
+            char keyPressed;
+            do
             {
-                ConsoleKeyInfo keyPressedInfo = Console.ReadKey();
-                char keyPressed = keyPressedInfo.KeyChar;
+                ConsoleKeyInfo keyPressedInfo = Console.ReadKey(true);
+                keyPressed = keyPressedInfo.KeyChar;
 
-                if (keyPressed != '1' && keyPressed != '2' && keyPressed != '3' && keyPressed != '4')
-                {
-                    //DisplayGamePlayScreen("Current Location", Text.CurrrentLocationInfo(), ActionMenu.MainMenu, "");
-                    ClearInputBox();
-                    selectingMenuOption = true;
-                }
-                else
-                {
-                    choosenAction = menu.MenuChoices[keyPressed];
-                    selectingMenuOption = false;
-                    return choosenAction;
-                }
-            }
+            } while (!validKeys.Contains(keyPressed));
+
+            choosenAction = menu.MenuChoices[keyPressed];
+            Console.CursorVisible = true;
+
             return choosenAction;
         }
 

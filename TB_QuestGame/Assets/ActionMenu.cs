@@ -59,8 +59,12 @@ namespace TB_QuestGame
                 {
                     { '1', PlayerAction.PlayerInfo },
                     { '2', PlayerAction.EditPlayerInfo },
-                    { '3', PlayerAction.Return },
-                    { '4', PlayerAction.Exit }
+                    { '3', PlayerAction.LookAround },
+                    { '4', PlayerAction.Travel },
+                    { '5', PlayerAction.LocationsVisited },
+                    { '6', PlayerAction.ListDestinations },
+                    { '9', PlayerAction.Return },
+                    { '0', PlayerAction.Exit }
                 }
         };
 

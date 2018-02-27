@@ -50,12 +50,14 @@
     <Compile Include="ConsoleUtilities\ConsoleWindowControl.cs" />
     <Compile Include="ConsoleUtilities\ConsoleWindowHelper.cs" />
     <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="IslandLocation.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerAction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Universe.cs" />
     <Compile Include="Views\ConsoleView.cs" />
   </ItemGroup>
   <ItemGroup>
